@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FoodHaven</title>
-    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
@@ -17,33 +17,24 @@
                 <span class="line line3"></span>
             </div>
             <ul class="menu-items">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../restaurants/restaurantHome.html">Restaurants</a></li>
-                <li><a href="#cuisines">Cuisines</a>
-                    <ul class="dropdown">
-                      <li><a href="#">Italian</a></li>
-                      <li><a href="#">Indian</a></li>
-                      <li><a href="#">Bengali</a></li>
-                      <li><a href="#">Chinese</a></li>
-                    </ul>
-                </li>
-                <li><a href="#cuisines">Locations</a>
-                    <ul class="dropdown">
-                      <li><a href="#">Bashundhara</a></li>
-                      <li><a href="#">Banani</a></li>
-                      <li><a href="#">Mirpur</a></li>
-                      <li><a href="#">Uttara</a></li>
-                      <li><a href="#">Mohammadpur</a></li>
-                      <li><a href="#">Khilgaon</a></li>
-                    </ul>
-                </li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="restaurantHome.html">Restaurants</a></li>
+                <li><a href="#description">About</a></li>
+                <li><a href="#food-menu">Menu</a></li>
+                <li><a href="#location">Location</a></li>
+                <li><a href="#contact-info">Contact</a></li>
             </ul>
             <h1 class="logo">FoodHaven</h1>
         </div>
     </nav>
-    <section class="showcase-area" id="showcase" style="background-image: url('../images/takeout.jpg');">
-        <button class="change-image-btn">Change Picture</button>
-        <div class="showcase-container">
+    <section class="showcase-area" id="showcase" style="background-image: url('images/takeout.jpg');">
+    </section>
+    <section id="description">
+        <div class="decription-container">
+            <h2 class="description-heading">About!</h2>
+            <div class="description-item">
+                <p class="description-paragraph">This place is for pussies and pussies only.</p>
+            </div>
         </div>
     </section>
     <section id="food-menu">
@@ -52,38 +43,38 @@
             <div class="food-menu-items">
                 <!--Copy from here-->
                 <div class="food-menu-item">
-                    <img class="food-item-img" src="../images/animeRes.jpg" alt="Spaghetti Carbonara">
+                    <img class="food-item-img" src="images/animeRes.jpg" alt="Spaghetti Carbonara">
                     <h3 class="food-item-name">Spaghetti Carbonara</h3>
                     <p class="food-item-description">Pasta with bacon, eggs, Parmesan cheese, and black pepper.</p>
                     <p class="food-item-price">$12.99</p>
                 </div>
                 <!--Until here for food menu item-->
                 <div class="food-menu-item">
-                    <img class="food-item-img" src="../images/animeRes.jpg" alt="Spaghetti Carbonara">
+                    <img class="food-item-img" src="images/animeRes.jpg" alt="Spaghetti Carbonara">
                     <h3 class="food-item-name">Spaghetti Carbonara</h3>
                     <p class="food-item-description">Pasta with bacon, eggs, Parmesan cheese, and black pepper.</p>
                     <p class="food-item-price">$12.99</p>
                 </div>
                 <div class="food-menu-item">
-                    <img class="food-item-img" src="../images/animeRes.jpg" alt="Spaghetti Carbonara">
+                    <img class="food-item-img" src="images/animeRes.jpg" alt="Spaghetti Carbonara">
                     <h3 class="food-item-name">Spaghetti Carbonara</h3>
                     <p class="food-item-description">Pasta with bacon, eggs, Parmesan cheese, and black pepper.</p>
                     <p class="food-item-price">$12.99</p>
                 </div>
                 <div class="food-menu-item">
-                    <img class="food-item-img" src="../images/animeRes.jpg" alt="Spaghetti Carbonara">
+                    <img class="food-item-img" src="images/animeRes.jpg" alt="Spaghetti Carbonara">
                     <h3 class="food-item-name">Spaghetti Carbonara</h3>
                     <p class="food-item-description">Pasta with bacon, eggs, Parmesan cheese, and black pepper.</p>
                     <p class="food-item-price">$12.99</p>
                 </div>
                 <div class="food-menu-item">
-                    <img class="food-item-img" src="../images/animeRes.jpg" alt="Spaghetti Carbonara">
+                    <img class="food-item-img" src="images/animeRes.jpg" alt="Spaghetti Carbonara">
                     <h3 class="food-item-name">Spaghetti Carbonara</h3>
                     <p class="food-item-description">Pasta with bacon, eggs, Parmesan cheese, and black pepper.</p>
                     <p class="food-item-price">$12.99</p>
                 </div>
                 <div class="food-menu-item">
-                    <img class="food-item-img" src="../images/animeRes.jpg" alt="Spaghetti Carbonara">
+                    <img class="food-item-img" src="images/animeRes.jpg" alt="Spaghetti Carbonara">
                     <h3 class="food-item-name">Spaghetti Carbonara</h3>
                     <p class="food-item-description">Pasta with bacon, eggs, Parmesan cheese, and black pepper.</p>
                     <p class="food-item-price">$12.99</p>
@@ -126,6 +117,12 @@
                 <!-- Add more menu items as needed -->
             </div>
         </div>
-    </section>   
+    </section>
+    <section id="contact-info">
+        <h2 class="contact-info-heading">Contact:</h2>
+        <div class="contact-info-container">
+            <p class="contact-info-paragraph" id="contact-text">TakeoutIsTrash@gmail.com <big><font color="#117964">Or</font></big> Call at: 1235287</p>
+        </div>
+    </section>  
 </body>
 </html>

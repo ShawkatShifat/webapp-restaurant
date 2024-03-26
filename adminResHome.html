@@ -18,7 +18,7 @@
             </div>
             <ul class="menu-items">
                 <li><a href="../index.html">Home</a></li>
-                <li><a href="../restaurants/restaurantHome.html">Restaurants</a></li>
+                <li><a href="restaurantHome.html">Restaurants</a></li>
                 <li><a href="#cuisines">Cuisines</a>
                     <ul class="dropdown">
                       <li><a href="#">Italian</a></li>
@@ -41,10 +41,12 @@
             <h1 class="logo">FoodHaven</h1>
         </div>
     </nav>
-    <section class="showcase-area" id="showcase" style="background-image: url('../images/showcaseRestaurant.jpg');">
+    <section class="showcase-area" id="showcase" style="background-image: url('images/showcaseRestaurant.jpg');">
         <div class="showcase-container">
-            <h1 id="restaurantP" class="main-title" id="home">Let's Begin!</h1>
+            <h1 id="restaurantP" class="main-title" id="home" style="margin-top: 20px;">Let's Begin!</h1>
             <p id="restaurantP">Some Great Restaurants Are Listed Below.</p>
+            <input type="file" accept="image/*" id="image-upload" name="uploadImg"style="display: none;">
+            <label for="image-upload" class="upload-label"><img src="images/uploadButton.png" class="upload-image"></label>
         </div>
     </section>
     <section id="restaurant-list">
