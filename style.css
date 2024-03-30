@@ -614,6 +614,27 @@ margin-top: 1.5em;
   color: #117964;
   font-weight: 700;
 }
+
+.restaurant-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* Example height for the container */
+}
+
+.restaurant-button .btn-primary {
+  display: inline-block;
+  padding: 0.5em 1.5em;
+  text-decoration: none;
+  border-radius: 50px;
+  cursor: pointer;
+  outline: none;
+  margin-top: 1em;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  font-weight: small; /* Add this to center the button */
+}
+
 /*.........Restaurant.........*/
 
 .description-container {
@@ -828,6 +849,8 @@ margin-top: 1.5em;
 /*.........Food Menu.........*/
 
 .food-menu-container {
+  overflow: auto;
+  margin-bottom: 40px;
   padding: 5px 10px;
   display: flex;
   flex-wrap: wrap;
@@ -897,8 +920,8 @@ margin-top: 1.5em;
   text-align: center;
   font-size: 2.5rem;
   color: #117964;
-  margin-bottom: 50px;
-  margin-top: 50px;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .location-items {

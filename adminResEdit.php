@@ -1,5 +1,27 @@
-<html lang="en">
+<?php
+// Include the database connection file
+include 'database.php';
 
+// Retrieve restaurant information from the database
+try {
+    // Prepare and execute the query to fetch restaurant details
+    $stmt_restaurant = $pdo->query("SELECT * FROM restaurant WHERE restaurantID = 1"); // Adjust the WHERE condition as needed
+
+    // Fetch the restaurant details
+    $restaurant = $stmt_restaurant->fetch(PDO::FETCH_ASSOC);
+
+    // Prepare and execute the query to fetch menu items for the restaurant
+    $stmt_menu_items = $pdo->query("SELECT * FROM menuitem WHERE menuID IN (SELECT menuID FROM menu WHERE restaurantID = 1)"); // Adjust the WHERE condition as needed
+
+    // Fetch the menu items
+    $menu_items = $stmt_menu_items->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    // If an error occurs, handle it
+    die("Error fetching restaurant information: " . $e->getMessage());
+}
+?>
+
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -127,10 +149,55 @@
                     <p class="food-item-price">$12.99</p>
                     <button class="btn btn-primary" onclick="editFoodMenuItem(2)">Edit</button>
                 </div>
+                <div class="food-menu-item">
+                    <div class="food-menu-item-image">
+                        <img class="food-item-img" src="images/animeRes.jpg" alt="Spaghetti Carbonara">
+                        <input type="file" accept="image/*" id="food-menu-image-upload2" name="uploadImgFoodMenu" style="display: none;">
+                        <label for="food-menu-image-upload2" class="food-menu-upload-label"><img src="images/16.png" class="food-menu-upload-image"> Change Image</label>
+                    </div>
+                    <h3 class="food-item-name">Spaghetti Carbonara</h3>
+                    <p class="food-item-description">Pasta with bacon, eggs, Parmesan cheese, and black pepper.</p>
+                    <p class="food-item-price">$12.99</p>
+                    <button class="btn btn-primary" onclick="editFoodMenuItem(2)">Edit</button>
+                </div>
+                <div class="food-menu-item">
+                    <div class="food-menu-item-image">
+                        <img class="food-item-img" src="images/animeRes.jpg" alt="Spaghetti Carbonara">
+                        <input type="file" accept="image/*" id="food-menu-image-upload2" name="uploadImgFoodMenu" style="display: none;">
+                        <label for="food-menu-image-upload2" class="food-menu-upload-label"><img src="images/16.png" class="food-menu-upload-image"> Change Image</label>
+                    </div>
+                    <h3 class="food-item-name">Spaghetti Carbonara</h3>
+                    <p class="food-item-description">Pasta with bacon, eggs, Parmesan cheese, and black pepper.</p>
+                    <p class="food-item-price">$12.99</p>
+                    <button class="btn btn-primary" onclick="editFoodMenuItem(2)">Edit</button>
+                </div>
+                <div class="food-menu-item">
+                    <div class="food-menu-item-image">
+                        <img class="food-item-img" src="images/animeRes.jpg" alt="Spaghetti Carbonara">
+                        <input type="file" accept="image/*" id="food-menu-image-upload2" name="uploadImgFoodMenu" style="display: none;">
+                        <label for="food-menu-image-upload2" class="food-menu-upload-label"><img src="images/16.png" class="food-menu-upload-image"> Change Image</label>
+                    </div>
+                    <h3 class="food-item-name">Spaghetti Carbonara</h3>
+                    <p class="food-item-description">Pasta with bacon, eggs, Parmesan cheese, and black pepper.</p>
+                    <p class="food-item-price">$12.99</p>
+                    <button class="btn btn-primary" onclick="editFoodMenuItem(2)">Edit</button>
+                </div>
+                <div class="food-menu-item">
+                    <div class="food-menu-item-image">
+                        <img class="food-item-img" src="images/animeRes.jpg" alt="Spaghetti Carbonara">
+                        <input type="file" accept="image/*" id="food-menu-image-upload2" name="uploadImgFoodMenu" style="display: none;">
+                        <label for="food-menu-image-upload2" class="food-menu-upload-label"><img src="images/16.png" class="food-menu-upload-image"> Change Image</label>
+                    </div>
+                    <h3 class="food-item-name">Spaghetti Carbonara</h3>
+                    <p class="food-item-description">Pasta with bacon, eggs, Parmesan cheese, and black pepper.</p>
+                    <p class="food-item-price">$12.99</p>
+                    <button class="btn btn-primary" onclick="editFoodMenuItem(2)">Edit</button>
+                </div>
                 <!-- Add more menu items as needed -->
             </div>
         </div>
     </section>
+    <br>
     <section id="location">
         <div class="location-container container">
             <h2 class="location-heading">Locations</h2>
@@ -141,7 +208,7 @@
                     <p class="location-description">Pasta with bacon, eggs, Parmesan cheese, and black pepper.</p>
                     <a href="sample@Link" class="btn btn-secondary">Google Map</a><br>
                     <button class="btn btn-primary" onclick="editLocationItem(1)">Edit</button>
-                    <button class="btn btn-primary">Edit</button>
+                    
                 </div>
                 <!--Until here for location item-->
                 <div class="location-item">
@@ -149,28 +216,28 @@
                     <p class="location-description">Pasta with bacon, eggs, Parmesan cheese, and black pepper.</p>
                     <a href="sample@Link" class="btn btn-secondary">Google Map</a><br>
                     <button class="btn btn-primary" onclick="editLocationItem(2)">Edit</button>
-                    <button class="btn btn-primary">Edit</button>
+                    
                 </div>
                 <div class="location-item">
                     <h3 class="location-name">Spaghetti Carbonara</h3>
                     <p class="location-description">Pasta with bacon, eggs, Parmesan cheese, and black pepper.</p>
                     <a href="sample@Link" class="btn btn-secondary">Google Map</a><br>
                     <button class="btn btn-primary" onclick="editLocationItem(3)">Edit</button>
-                    <button class="btn btn-primary">Edit</button>
+                    
                 </div>
                 <div class="location-item">
                     <h3 class="location-name">Spaghetti Carbonara</h3>
                     <p class="location-description">Pasta with bacon, eggs, Parmesan cheese, and black pepper.</p>
                     <a href="sample@Link" class="btn btn-secondary">Google Map</a><br>
                     <button class="btn btn-primary" onclick="editLocationItem(4)">Edit</button>
-                    <button class="btn btn-primary">Edit</button>
+                    
                 </div>
                 <div class="location-item">
                     <h3 class="location-name">Spaghetti Carbonara</h3>
                     <p class="location-description">Pasta with bacon, eggs, Parmesan cheese, and black pepper.</p>
                     <a href="sample@Link" class="btn btn-secondary">Google Map</a><br>
                     <button class="btn btn-primary" onclick="editLocationItem(5)">Edit</button>
-                    <button class="btn btn-primary">Edit</button>
+                    
                 </div>
                 <!-- Add more menu items as needed -->
             </div>
