@@ -1,26 +1,3 @@
-<?php
-// Include the database connection file
-include 'database.php';
-
-// Retrieve restaurant information from the database
-try {
-    // Prepare and execute the query to fetch restaurant details
-    $stmt_restaurant = $pdo->query("SELECT * FROM restaurant WHERE restaurantID = 1"); // Adjust the WHERE condition as needed
-
-    // Fetch the restaurant details
-    $restaurant = $stmt_restaurant->fetch(PDO::FETCH_ASSOC);
-
-    // Prepare and execute the query to fetch menu items for the restaurant
-    $stmt_menu_items = $pdo->query("SELECT * FROM menuitem WHERE menuID IN (SELECT menuID FROM menu WHERE restaurantID = 1)"); // Adjust the WHERE condition as needed
-
-    // Fetch the menu items
-    $menu_items = $stmt_menu_items->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    // If an error occurs, handle it
-    die("Error fetching restaurant information: " . $e->getMessage());
-}
-?>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8" />

@@ -29,14 +29,27 @@
     </nav>
     <section class="showcase-area" id="showcase" style="background-image: url('images/takeout.jpg');">
     </section>
+
     <section id="description">
         <div class="decription-container">
             <h2 class="description-heading">About!</h2>
             <div class="description-item">
-                <p class="description-paragraph">This place is for pussies and pussies only.</p>
+                <?php
+                require 'database.php';
+                try {
+                    $stmt = $pdo->prepare("SELECT description FROM restaurant WHERE restaurantID = :restaurantID");
+                    $stmt->execute(['restaurantID' => 1]);
+                    $row = $stmt->fetch();
+                    $description = $row['description'];
+                    echo '<p class="description-paragraph">' . $description . '</p>';
+                } catch (PDOException $e) {
+                    echo "Error: " . $e->getMessage();
+                }
+                ?>
             </div>
         </div>
     </section>
+
     <section id="food-menu">
         <div class="food-menu-container container">
             <h2 class="food-menu-heading">Menu</h2>
@@ -84,40 +97,37 @@
         </div>
     </section>
     <section id="location">
-        <div class="location-container container">
-            <h2 class="location-heading">Locations</h2>
-            <div class="location-items">
-                <!--Copy from here-->
-                <div class="location-item">
-                    <h3 class="location-name">Spaghetti Carbonara</h3>
-                    <p class="location-description">Pasta with bacon, eggs, Parmesan cheese, and black pepper.</p>
-                    <a href="sample@Link" class="btn btn-secondary">Google Map</a>
-                </div>
-                <!--Until here for location item-->
-                <div class="location-item">
-                    <h3 class="location-name">Spaghetti Carbonara</h3>
-                    <p class="location-description">Pasta with bacon, eggs, Parmesan cheese, and black pepper.</p>
-                    <a href="sample@Link" class="btn btn-secondary">Google Map</a>
-                </div>
-                <div class="location-item">
-                    <h3 class="location-name">Spaghetti Carbonara</h3>
-                    <p class="location-description">Pasta with bacon, eggs, Parmesan cheese, and black pepper.</p>
-                    <a href="sample@Link" class="btn btn-secondary">Google Map</a>
-                </div>
-                <div class="location-item">
-                    <h3 class="location-name">Spaghetti Carbonara</h3>
-                    <p class="location-description">Pasta with bacon, eggs, Parmesan cheese, and black pepper.</p>
-                    <a href="sample@Link" class="btn btn-secondary">Google Map</a>
-                </div>
-                <div class="location-item">
-                    <h3 class="location-name">Spaghetti Carbonara</h3>
-                    <p class="location-description">Pasta with bacon, eggs, Parmesan cheese, and black pepper.</p>
-                    <a href="sample@Link" class="btn btn-secondary">Google Map</a>
-                </div>
-                <!-- Add more menu items as needed -->
-            </div>
+    <div class="location-container container">
+        <h2 class="location-heading">Locations</h2>
+        <div class="location-items">
+            <?php
+            require 'database.php'; // Include your database connection file
+
+            try {
+                // Fetch the location details
+                $stmt = $pdo->prepare("SELECT location, address, map FROM locations WHERE restaurantID = :restaurantID");
+                $stmt->execute(['restaurantID' => 1]); // Replace 1 with the actual restaurant ID
+
+                while ($row = $stmt->fetch()) {
+                    $location = $row['location'];
+                    $address = $row['address'];
+                    $map = $row['map'];
+
+                    echo '<div class="location-item">';
+                    echo '<h3 class="location-name">' . $location . '</h3>';
+                    echo '<p class="location-description">' . $address . '</p>';
+                    echo '<a href="' . $map . '" target="_blank" " class="btn btn-secondary">Google Map</a>';
+                    echo '</div>';
+                }
+
+            } catch (PDOException $e) {
+                echo "Error: " . $e->getMessage();
+            }
+            ?>
         </div>
-    </section>
+    </div>
+</section>
+
     <section id="contact-info">
         <h2 class="contact-info-heading">Contact:</h2>
         <div class="contact-info-container">
