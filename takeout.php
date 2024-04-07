@@ -1,16 +1,3 @@
-<?php
-require 'database.php'; // Include your database connection file
-
-try {
-    $stmt = $pdo->prepare("SELECT * FROM menuitem WHERE menuID = :menuID");
-    $stmt->execute(['menuID' => 1]); // Replace 1 with the actual menu ID
-
-    $menuItems = $stmt->fetchAll();
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
-?>
-
 <html lang="en">
 
 <head>
@@ -63,14 +50,27 @@ try {
         </div>
     </section>
 
+
+    <?php
+        require 'database.php'; 
+
+        try {
+            $stmt = $pdo->prepare("SELECT * FROM menuitem WHERE menuID = :menuID");
+            $stmt->execute(['menuID' => 1]); // Replace 1 with the actual menu ID
+            $menuItems = $stmt->fetchAll();
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    ?>
+
+
     <section id="food-menu">
     <div class="food-menu-container container">
         <h2 class="food-menu-heading">Menu</h2>
         <div class="food-menu-items">
             <?php
-            // Assuming $menuItems is an array containing data fetched from the database
+           
             foreach ($menuItems as $menuItem) {
-                // Map local path to web URL
                 $imageUrl = str_replace('C:\\xampp\\htdocs\\webapp\\', '/webapp/', $menuItem['imagePath']);
                 ?>
                 <div class="food-menu-item">
@@ -93,10 +93,9 @@ try {
             <h2 class="location-heading">Locations</h2>
             <div class="location-items">
                 <?php
-                require 'database.php'; // Include your database connection file
+                require 'database.php'; 
 
                 try {
-                    // Fetch the location details
                     $stmt = $pdo->prepare("SELECT location, address, map FROM locations WHERE restaurantID = :restaurantID");
                     $stmt->execute(['restaurantID' => 1]); // Replace 1 with the actual restaurant ID
 
@@ -122,11 +121,11 @@ try {
 
 
     <?php
-        require 'database.php'; // Include your database connection file
-
+        require 'database.php'; 
         try {
             $stmt = $pdo->prepare("SELECT email, contactNumber FROM restaurant WHERE restaurantID = :restaurantID");
-            $stmt->execute(['restaurantID' => 1]); 
+            $stmt->execute(['restaurantID' => 1]); // Replace 1 with the actual restaurant ID
+
 
             $row = $stmt->fetch();
             $email = $row['email'];
