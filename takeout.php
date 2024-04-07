@@ -120,11 +120,30 @@ try {
         </div>
     </section>
 
+
+    <?php
+        require 'database.php'; // Include your database connection file
+
+        try {
+            $stmt = $pdo->prepare("SELECT email, contactNumber FROM restaurant WHERE restaurantID = :restaurantID");
+            $stmt->execute(['restaurantID' => 1]); 
+
+            $row = $stmt->fetch();
+            $email = $row['email'];
+            $number = $row['contactNumber'];
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    ?>
+
     <section id="contact-info">
         <h2 class="contact-info-heading">Contact:</h2>
         <div class="contact-info-container">
-            <p class="contact-info-paragraph" id="contact-text">TakeoutIsTrash@gmail.com <big><font color="#117964">Or</font></big> Call at: 1235287</p>
+            <p class="contact-info-paragraph" id="contact-text">
+                <a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a> <big><font color="#117964">Or</font></big> <?php echo $number; ?>
+            </p>
         </div>
-    </section>  
+    </section>
+
 </body>
 </html>
