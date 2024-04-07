@@ -47,6 +47,20 @@
                 }
                 ?>
             </div>
+            <div class="rating">
+            <?php
+                require 'database.php';
+                try {
+                    $stmt = $pdo->prepare("SELECT rating FROM restaurant WHERE restaurantID = :restaurantID");
+                    $stmt->execute(['restaurantID' => 1]);
+                    $row = $stmt->fetch();
+                    $rating = $row['rating'];
+                    echo '<p class="rating-paragraph">Restaurant Rating: ' . $rating . '</p>';
+                } catch (PDOException $e) {
+                    echo "Error: " . $e->getMessage();
+                }
+                ?>
+            </div>
         </div>
     </section>
 

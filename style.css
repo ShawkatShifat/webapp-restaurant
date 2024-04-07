@@ -666,6 +666,20 @@ margin-top: 1.5em;
   margin-bottom: 1rem;
 }
 
+.rating {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.rating-paragraph {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 1rem;
+}
 
 .contact-info-container {
   padding: 5px 10px;
