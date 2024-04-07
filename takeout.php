@@ -1,3 +1,16 @@
+<?php
+require 'database.php'; // Include your database connection file
+
+try {
+    $stmt = $pdo->prepare("SELECT * FROM menuitem WHERE menuID = :menuID");
+    $stmt->execute(['menuID' => 1]); // Replace 1 with the actual menu ID
+
+    $menuItems = $stmt->fetchAll();
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+?>
+
 <html lang="en">
 
 <head>
@@ -51,82 +64,61 @@
     </section>
 
     <section id="food-menu">
-        <div class="food-menu-container container">
-            <h2 class="food-menu-heading">Menu</h2>
-            <div class="food-menu-items">
-                <!--Copy from here-->
-                <div class="food-menu-item">
-                    <img class="food-item-img" src="images/animeRes.jpg" alt="Spaghetti Carbonara">
-                    <h3 class="food-item-name">Spaghetti Carbonara</h3>
-                    <p class="food-item-description">Pasta with bacon, eggs, Parmesan cheese, and black pepper.</p>
-                    <p class="food-item-price">$12.99</p>
-                </div>
-                <!--Until here for food menu item-->
-                <div class="food-menu-item">
-                    <img class="food-item-img" src="images/animeRes.jpg" alt="Spaghetti Carbonara">
-                    <h3 class="food-item-name">Spaghetti Carbonara</h3>
-                    <p class="food-item-description">Pasta with bacon, eggs, Parmesan cheese, and black pepper.</p>
-                    <p class="food-item-price">$12.99</p>
-                </div>
-                <div class="food-menu-item">
-                    <img class="food-item-img" src="images/animeRes.jpg" alt="Spaghetti Carbonara">
-                    <h3 class="food-item-name">Spaghetti Carbonara</h3>
-                    <p class="food-item-description">Pasta with bacon, eggs, Parmesan cheese, and black pepper.</p>
-                    <p class="food-item-price">$12.99</p>
-                </div>
-                <div class="food-menu-item">
-                    <img class="food-item-img" src="images/animeRes.jpg" alt="Spaghetti Carbonara">
-                    <h3 class="food-item-name">Spaghetti Carbonara</h3>
-                    <p class="food-item-description">Pasta with bacon, eggs, Parmesan cheese, and black pepper.</p>
-                    <p class="food-item-price">$12.99</p>
-                </div>
-                <div class="food-menu-item">
-                    <img class="food-item-img" src="images/animeRes.jpg" alt="Spaghetti Carbonara">
-                    <h3 class="food-item-name">Spaghetti Carbonara</h3>
-                    <p class="food-item-description">Pasta with bacon, eggs, Parmesan cheese, and black pepper.</p>
-                    <p class="food-item-price">$12.99</p>
-                </div>
-                <div class="food-menu-item">
-                    <img class="food-item-img" src="images/animeRes.jpg" alt="Spaghetti Carbonara">
-                    <h3 class="food-item-name">Spaghetti Carbonara</h3>
-                    <p class="food-item-description">Pasta with bacon, eggs, Parmesan cheese, and black pepper.</p>
-                    <p class="food-item-price">$12.99</p>
-                </div>
-                <!-- Add more menu items as needed -->
-            </div>
-        </div>
-    </section>
-    <section id="location">
-    <div class="location-container container">
-        <h2 class="location-heading">Locations</h2>
-        <div class="location-items">
+    <div class="food-menu-container container">
+        <h2 class="food-menu-heading">Menu</h2>
+        <div class="food-menu-items">
             <?php
-            require 'database.php'; // Include your database connection file
-
-            try {
-                // Fetch the location details
-                $stmt = $pdo->prepare("SELECT location, address, map FROM locations WHERE restaurantID = :restaurantID");
-                $stmt->execute(['restaurantID' => 1]); // Replace 1 with the actual restaurant ID
-
-                while ($row = $stmt->fetch()) {
-                    $location = $row['location'];
-                    $address = $row['address'];
-                    $map = $row['map'];
-
-                    echo '<div class="location-item">';
-                    echo '<h3 class="location-name">' . $location . '</h3>';
-                    echo '<p class="location-description">' . $address . '</p>';
-                    echo '<a href="' . $map . '" target="_blank" " class="btn btn-secondary">Google Map</a>';
-                    echo '</div>';
-                }
-
-            } catch (PDOException $e) {
-                echo "Error: " . $e->getMessage();
+            // Assuming $menuItems is an array containing data fetched from the database
+            foreach ($menuItems as $menuItem) {
+                // Map local path to web URL
+                $imageUrl = str_replace('C:\\xampp\\htdocs\\webapp\\', '/webapp/', $menuItem['imagePath']);
+                ?>
+                <div class="food-menu-item">
+                    <img class="food-item-img" src="<?php echo $imageUrl; ?>" alt="<?php echo $menuItem['itemName']; ?>">
+                    <h3 class="food-item-name"><?php echo $menuItem['itemName']; ?></h3>
+                    <p class="food-item-description"><?php echo $menuItem['description']; ?></p>
+                    <p class="food-item-price"><?php echo 'TK ' . $menuItem['price']; ?></p>
+                </div>
+            <?php
             }
             ?>
         </div>
     </div>
 </section>
+
+
+
+    <section id="location">
+        <div class="location-container container">
+            <h2 class="location-heading">Locations</h2>
+            <div class="location-items">
+                <?php
+                require 'database.php'; // Include your database connection file
+
+                try {
+                    // Fetch the location details
+                    $stmt = $pdo->prepare("SELECT location, address, map FROM locations WHERE restaurantID = :restaurantID");
+                    $stmt->execute(['restaurantID' => 1]); // Replace 1 with the actual restaurant ID
+
+                    while ($row = $stmt->fetch()) {
+                        $location = $row['location'];
+                        $address = $row['address'];
+                        $map = $row['map'];
+
+                        echo '<div class="location-item">';
+                        echo '<h3 class="location-name">' . $location . '</h3>';
+                        echo '<p class="location-description">' . $address . '</p>';
+                        echo '<a href="' . $map . '" target="_blank" " class="btn btn-secondary">Google Map</a>';
+                        echo '</div>';
+                    }
+
+                } catch (PDOException $e) {
+                    echo "Error: " . $e->getMessage();
+                }
+                ?>
+            </div>
+        </div>
+    </section>
 
     <section id="contact-info">
         <h2 class="contact-info-heading">Contact:</h2>

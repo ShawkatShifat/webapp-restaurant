@@ -103,3 +103,26 @@
     }
 
     </script>-->
+
+
+
+
+
+    <?php
+require 'database.php'; // Include your database connection file
+
+try {
+    $itemName = 'My Item';
+    $description = 'This is my item';
+    $price = 9.99;
+    $imagePath = '/images/myImage.jpg'; // Replace with your actual image path
+    $menuID = 1; // Replace with your actual menu ID
+
+    $stmt = $pdo->prepare("INSERT INTO menuitem (menuID, itemName, description, price, imagePath) VALUES (:menuID, :itemName, :description, :price, :imagePath)");
+    $stmt->execute(['menuID' => $menuID, 'itemName' => $itemName, 'description' => $description, 'price' => $price, 'imagePath' => $imagePath]);
+
+    echo 'Menu item inserted successfully';
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+?>
