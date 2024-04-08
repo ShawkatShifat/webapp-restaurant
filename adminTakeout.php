@@ -32,17 +32,42 @@
             <label for="image-upload" class="upload-label"><img src="images/uploadButton.png" class="upload-image"></label>
         </div>
     </section>
+    
     <section id="description">
         <div class="description-container">
             <h2 class="description-heading">About!</h2>
             <div class="description-item">
-                <p class="description-paragraph" id="description-text">This place is for pussies and pussies only.</p>
-                <button class="btn btn-primary" onclick="editDescription()">Edit</button>
-                <button class="btn btn-success" onclick="saveDescription()" style="display: none;">Save</button>
-                <button class="btn btn-danger" onclick="cancelDescription()" style="display: none;">Cancel</button>
+                <?php
+                require 'database.php';
+                try {
+                    $stmt = $pdo->prepare("SELECT description FROM restaurant WHERE restaurantID = :restaurantID");
+                    $stmt->execute(['restaurantID' => 1]);
+                    $row = $stmt->fetch();
+                    $description = $row['description'];
+                    echo '<p class="description-paragraph">' . $description . '</p>';
+                } catch (PDOException $e) {
+                    echo "Error: " . $e->getMessage();
+                }
+                ?>
             </div>
+            <div class="rating">
+            <?php
+                require 'database.php';
+                try {
+                    $stmt = $pdo->prepare("SELECT rating FROM restaurant WHERE restaurantID = :restaurantID");
+                    $stmt->execute(['restaurantID' => 1]);
+                    $row = $stmt->fetch();
+                    $rating = $row['rating'];
+                    echo '<p class="rating-paragraph">Restaurant Rating: ' . $rating . '</p>';
+                } catch (PDOException $e) {
+                    echo "Error: " . $e->getMessage();
+                }
+                ?>
+            </div>
+            <a href="pageEdit.php?return=adminTakeout.php" class="btn btn-primary">Edit Description</a><br><br>
         </div>
     </section>
+
     <section id="food-menu">
         <div class="food-menu-container container">
             <h2 class="food-menu-heading">Menu</h2>
@@ -230,110 +255,6 @@
         </div>
     </section>
 
-    <script>
-    function editDescription() {
-        var descriptionParagraph = document.getElementById("description-text");
-        var editButton = document.querySelector("#description .btn-primary");
-        var saveButton = document.querySelector("#description .btn-success");
-        var cancelButton = document.querySelector("#description .btn-danger");
-
-    // Hide edit button and show save and cancel buttons
-        editButton.style.display = "none";
-        saveButton.style.display = "inline-block";
-        cancelButton.style.display = "inline-block";
-
-    // Make paragraph editable
-        descriptionParagraph.contentEditable = true;
-        descriptionParagraph.focus();
-    }
-
-    function saveDescription() {
-        var descriptionParagraph = document.getElementById("description-text");
-        var editButton = document.querySelector("#description .btn-primary");
-        var saveButton = document.querySelector("#description .btn-success");
-        var cancelButton = document.querySelector("#description .btn-danger");
-
-    // Save the edited content
-        var newText = descriptionParagraph.innerText;
-
-    // Update paragraph content
-        descriptionParagraph.contentEditable = false;
-        descriptionParagraph.innerText = newText;
-
-    // Hide save and cancel buttons, show edit button
-        saveButton.style.display = "none";
-        cancelButton.style.display = "none";
-        editButton.style.display = "inline-block";
-    }
-
-    function cancelDescription() {
-        var descriptionParagraph = document.getElementById("description-text");
-        var editButton = document.querySelector("#description .btn-primary");
-        var saveButton = document.querySelector("#description .btn-success");
-        var cancelButton = document.querySelector("#description .btn-danger");
-
-    // Cancel editing, revert to original content
-        descriptionParagraph.contentEditable = false;
-
-    // Hide save and cancel buttons, show edit button
-        saveButton.style.display = "none";
-        cancelButton.style.display = "none";
-        editButton.style.display = "inline-block";
-        descriptionParagraph.innerText = "This place is for pussies and pussies only.";
-    }
-
-    function editContactInfo() {
-        var contactInfoParagraph = document.getElementById("contact-text");
-        var editButton = document.querySelector("#contact-info .btn-primary");
-        var saveButton = document.querySelector("#contact-info .btn-success");
-        var cancelButton = document.querySelector("#contact-info .btn-danger");
-
-    // Hide edit button and show save and cancel buttons
-        editButton.style.display = "none";
-        saveButton.style.display = "inline-block";
-        cancelButton.style.display = "inline-block";
-
-    // Make paragraph editable
-        contactInfoParagraph.contentEditable = true;
-        contactInfoParagraph.focus();
-    }
-
-    function saveContactInfo() {
-        var contactInfoParagraph = document.getElementById("contact-text");
-        var editButton = document.querySelector("#contact-info .btn-primary");
-        var saveButton = document.querySelector("#contact-info .btn-success");
-        var cancelButton = document.querySelector("#contact-info .btn-danger");
-
-    // Save the edited content
-        var newInfo = contactInfoParagraph.innerText;
-
-    // Update paragraph content
-        contactInfoParagraph.contentEditable = false;
-        contactInfoParagraph.innerText = newInfo;
-
-    // Hide save and cancel buttons, show edit button
-        saveButton.style.display = "none";
-        cancelButton.style.display = "none";
-        editButton.style.display = "inline-block";
-    }
-
-    function cancelContactInfo() {
-        var contactInfoParagraph = document.getElementById("contact-text");
-        var editButton = document.querySelector("#contact-info .btn-primary");
-        var saveButton = document.querySelector("#contact-info .btn-success");
-        var cancelButton = document.querySelector("#contact-info .btn-danger");
-
-    // Cancel editing, revert to original content
-        contactInfoParagraph.contentEditable = false;
-
-    // Hide save and cancel buttons, show edit button
-        saveButton.style.display = "none";
-        cancelButton.style.display = "none";
-        editButton.style.display = "inline-block";
-        contactInfoParagraph.innerText = "Email! Or Call at: 1235287";
-    }
-
-    </script>
 
 </body>
 </html>

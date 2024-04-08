@@ -11,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $password = $_POST["password"];
     $confirm_password = $_POST["confirm_password"];
-    $role = $_POST["role"] == 'admin' ? 1 : 0; // Convert role to 1 for admin and 0 for user
 
     // Validate password and confirm password match
     if ($password != $confirm_password) {
@@ -22,8 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Prepare and execute the SQL statement to insert the new user into the database
-    $stmt = $pdo->prepare("INSERT INTO user (userName, email, password, admin) VALUES (:fullname, :email, :password, :admin)");
-    $stmt->execute(['fullname' => $fullname, 'email' => $email, 'password' => $password, 'admin' => $role]);
+    $stmt = $pdo->prepare("INSERT INTO user (userName, email, password) VALUES (:fullname, :email, :password)");
+    $stmt->execute(['fullname' => $fullname, 'email' => $email, 'password' => $password]);
 
     // Redirect to a success page or login page
     header("location: index.html");
