@@ -111,7 +111,7 @@
 
                 try {
                     $stmt = $pdo->prepare("SELECT location, address, map FROM locations WHERE restaurantID = :restaurantID");
-                    $stmt->execute(['restaurantID' => 1]); // Replace 1 with the actual restaurant ID
+                    $stmt->execute(['restaurantID' => 1]); 
 
                     while ($row = $stmt->fetch()) {
                         $location = $row['location'];

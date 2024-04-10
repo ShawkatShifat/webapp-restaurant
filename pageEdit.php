@@ -42,8 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="page-edit-form-group">
                     <label for="rating">New Rating</label>
                     <input type="text" id="rating-text" name="rating-text">
-                </div>
-            <button type="page-edit-submit" class="btn btn-primary">Save</button>
+                </div><br>
+            <button type="page-edit-submit" class="btn btn-primary">Save</button><br>
             </form>
             <button type="page-edit-redirect" class="btn btn-primary" onclick="goBack()">Back to Page</button>
         </div>

@@ -105,7 +105,7 @@
                 <div class="recommendation-detail">
                     <div class="recommendation-photo">
                         <img src="images/takeout.jpg" alt="" />
-                        <a href="takeout.html" class="btn btn-primary">Takeout</a>
+                        <a href="takeout.php" class="btn btn-primary">Takeout</a>
                     </div>
                 </div>
                 <div class="star-rating">
@@ -124,7 +124,7 @@
                 <div class="recommendation-detail">
                     <div class="recommendation-photo">
                         <img src="images/madchef.jpg" alt="" />
-                        <a href="sultansdine.html" class="btn btn-primary">Madchef</a>
+                        <a href="madchef.php" class="btn btn-primary">Madchef</a>
                     </div>
                 </div>
                 <div class="star-rating">
@@ -144,7 +144,7 @@ Craving global flavors in a tranquil garden setting? Madchef beckons with an ext
                 <div class="recommendation-detail">
                     <div class="recommendation-photo">
                         <img src="images/Sultans-Dine.jpg" alt="" />
-                        <a href="sultansdine.html" class="btn btn-primary">Sultan's Dine</a>
+                        <a href="sultansdine.php" class="btn btn-primary">Sultan's Dine</a>
                     </div>
                 </div>
                 <div class="star-rating">
@@ -179,39 +179,31 @@ Craving global flavors in a tranquil garden setting? Madchef beckons with an ext
         </div>
     </section>
 
-    <!--Footer-->
     <footer id="footer">
         <h2>FoodHaven &copy; All Rights Reserved</h2>
     </footer>
 
 
-    <!-- JavaScript Code -->
+
     <script>
-        // Function to check if the user is logged in
         function isLoggedIn() {
             return document.cookie.split(';').some((item) => item.trim().startsWith('isLoggedIn='));
         }
-    
-        // Get references to the login and logout button elements
         const loginBtn = document.querySelector("#login-btn");
         const logoutBtn = document.querySelector("#logout-btn");
-    
-        // Function to toggle visibility based on login status
+
         function toggleLoginStatus() {
             if (isLoggedIn()) {
-                loginBtn.style.display = "none"; // Hide the login button
-                logoutBtn.style.display = "block"; // Show the logout button
+                loginBtn.style.display = "none";
+                logoutBtn.style.display = "block";
             } else {
-                loginBtn.style.display = "block"; // Show the login button
-                logoutBtn.style.display = "none"; // Hide the logout button
+                loginBtn.style.display = "block";
+                logoutBtn.style.display = "none";
             }
         }
-    
-        // Call the function to toggle login status when the page loads
         window.onload = toggleLoginStatus;
     </script>    
 
-    <!-- JS Code for smooth scrolling and other functionalities -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="app.js"></script>
 

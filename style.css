@@ -704,6 +704,10 @@ margin-top: 1.5em;
   text-align: center;
 }
 
+.contact-edit-container{
+  text-align: center;
+  border-radius: 10px; /* or 5% */
+}
 
 /* ........./ Recommendation /.......... */
 
@@ -760,7 +764,7 @@ margin-top: 1.5em;
 .contact-container {
   display: flex;
   background: #fff;
-  height: 50vh; /* Set the height to 75% of the viewport height */
+  height: 50vh; 
 }
 
 .contact-img {
@@ -768,9 +772,9 @@ margin-top: 1.5em;
 }
 
 .contact-img img {
-  height: 100%; /* Set the height of the image to fill its container */
+  height: 100%; 
   width: 100%;
-  object-fit: cover; /* Ensure the image covers the entire container */
+  object-fit: cover; 
 }
 
 .form-container {
@@ -956,13 +960,13 @@ margin-top: 1.5em;
 .location-name {
   font-size: 1.6rem;
   color: #444;
-  margin-bottom: 0.5rem; /* Added margin bottom for spacing */
+  margin-bottom: 0.5rem;
 }
 
 .location-description {
   font-size: 1.2rem;
   color: #555;
-  margin-bottom: 0rem; /* Added margin bottom for spacing */
+  margin-bottom: 0rem; 
 }
 
 /*........ Admin Panel .......*/
@@ -980,13 +984,13 @@ margin-top: 1.5em;
 }
 
 .upload-label {
-  cursor: pointer; /* Show cursor as pointer on hover */
-  display: inline-block; /* Ensure label takes the size of its contents */
+  cursor: pointer; 
+  display: inline-block; 
 }
 
 .upload-image {
-  width: 40px; /* Adjust width of the image */
-  height: 40px; /* Adjust height of the image */
+  width: 40px; 
+  height: 40px; 
 }
 
 .showcase-area:hover .upload-image {
@@ -1014,11 +1018,6 @@ margin-top: 1.5em;
   border-radius: 7%;
 }
 
-.contact-info-container .btn-primary{
-  border-radius: 7%;
-  margin-bottom: 4rem;
-}
-
 .food-menu-item .btn-primary{
   border-radius: 7%;
 }
@@ -1029,7 +1028,7 @@ margin-top: 1.5em;
 
 .page-edit-container {
   width: 70%;
-  height: 50%;
+  height: 60%;
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.8);
   border-radius: 8px;
@@ -1330,4 +1329,3 @@ button[type="page-edit-redirect"]:hover {
     height: 50vmax;
   }
 }
-
