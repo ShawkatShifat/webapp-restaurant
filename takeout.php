@@ -17,7 +17,7 @@
                 <span class="line line3"></span>
             </div>
             <ul class="menu-items">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="restaurantHome.html">Restaurants</a></li>
                 <li><a href="#description">About</a></li>
                 <li><a href="#food-menu">Menu</a></li>
@@ -47,6 +47,22 @@
                 }
                 ?>
             </div>
+
+            <div class="rating">
+            <?php
+                require 'database.php';
+                try {
+                    $stmt = $pdo->prepare("SELECT openingHours FROM restaurant WHERE restaurantID = :restaurantID");
+                    $stmt->execute(['restaurantID' => 1]);
+                    $row = $stmt->fetch();
+                    $openingHours = $row['openingHours'];
+                    echo '<p class="rating-paragraph"><small>Open From: </small>' . $openingHours . '</p>';
+                } catch (PDOException $e) {
+                    echo "Error: " . $e->getMessage();
+                }
+                ?>
+            </div>
+
             <div class="rating">
             <?php
                 require 'database.php';
@@ -70,7 +86,7 @@
 
         try {
             $stmt = $pdo->prepare("SELECT * FROM menuitem WHERE menuID = :menuID");
-            $stmt->execute(['menuID' => 1]); // Replace 1 with the actual menu ID
+            $stmt->execute(['menuID' => 1]);
             $menuItems = $stmt->fetchAll();
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();

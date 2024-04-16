@@ -50,6 +50,22 @@
                 }
                 ?>
             </div>
+            
+            <div class="rating">
+            <?php
+                require 'database.php';
+                try {
+                    $stmt = $pdo->prepare("SELECT openingHours FROM restaurant WHERE restaurantID = :restaurantID");
+                    $stmt->execute(['restaurantID' => 1]);
+                    $row = $stmt->fetch();
+                    $openingHours = $row['openingHours'];
+                    echo '<p class="rating-paragraph"><small>Open From: </small>' . $openingHours . '</p>';
+                } catch (PDOException $e) {
+                    echo "Error: " . $e->getMessage();
+                }
+                ?>
+            </div>
+
             <div class="rating">
             <?php
                 require 'database.php';

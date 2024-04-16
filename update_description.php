@@ -1,5 +1,5 @@
 <?php
-require 'database.php'; // Include your database connection file
+require 'database.php'; 
 
 try {
     $description = $_POST['description'];

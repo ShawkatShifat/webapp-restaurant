@@ -168,13 +168,33 @@ Craving global flavors in a tranquil garden setting? Madchef beckons with an ext
             <div class="contact-img">
                 <img src="images/logo-color.png" alt="" />
             </div>
+            <?php
+                require 'database.php';
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    $name = $_POST['name'];
+                    $email = $_POST['email'];
+                    $feedbackText = $_POST['message'];
 
+                    try {
+                        $stmt = $pdo->prepare("INSERT INTO feedback (name, email, feedbackText) VALUES (:name, :email, :feedbackText)");
+                        $stmt->bindParam(':name', $name);
+                        $stmt->bindParam(':email', $email);
+                        $stmt->bindParam(':feedbackText', $feedbackText);
+                        $stmt->execute();
+                        echo "";
+                    } catch (PDOException $e) {
+                        echo "Error: " . $e->getMessage();
+                    }
+                }
+            ?>
             <div class="form-container">
                 <h2>How Can We Improve?</h2>
-                <input type="text" placeholder="Your Name" />
-                <input type="email" placeholder="E-Mail" />
-                <textarea cols="30" rows="5" placeholder="Type Your Message"></textarea>
-                <a href="#" class="btn btn-primary">Submit</a>
+                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                    <input type="text" name="name" placeholder="Your Name" required />
+                    <input type="email" name="email" placeholder="E-Mail" required />
+                    <textarea name="message" cols="30" rows="5" placeholder="Type Your Message" required></textarea>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
             </div>
         </div>
     </section>
