@@ -17,7 +17,7 @@
                 <span class="line line3"></span>
             </div>
             <ul class="menu-items">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="restaurantHome.html">Restaurants</a></li>
                 <li><a href="#description">About</a></li>
                 <li><a href="#food-menu">Menu</a></li>
@@ -27,18 +27,18 @@
             <h1 class="logo">FoodHaven</h1>
         </div>
     </nav>
-    <section class="showcase-area" id="showcase" style="background-image: url('images/Sultans-Dine.jpg');">
+    <section class="showcase-area" id="showcase" style="background-image: url('images/animeRes.jpg');">
     </section>
 
     <section id="description">
+        <h2 class="description-heading">About!</h2>
         <div class="decription-container">
-            <h2 class="description-heading">About!</h2>
             <div class="description-item">
                 <?php
                 require 'database.php';
                 try {
                     $stmt = $pdo->prepare("SELECT description FROM restaurant WHERE restaurantID = :restaurantID");
-                    $stmt->execute(['restaurantID' => 1]);
+                    $stmt->execute(['restaurantID' => 3]);
                     $row = $stmt->fetch();
                     $description = $row['description'];
                     echo '<p class="description-paragraph">' . $description . '</p>';
@@ -47,12 +47,28 @@
                 }
                 ?>
             </div>
+
+            <div class="rating">
+            <?php
+                require 'database.php';
+                try {
+                    $stmt = $pdo->prepare("SELECT openingHours FROM restaurant WHERE restaurantID = :restaurantID");
+                    $stmt->execute(['restaurantID' => 3]);
+                    $row = $stmt->fetch();
+                    $openingHours = $row['openingHours'];
+                    echo '<p class="rating-paragraph"><small>Open From: </small>' . $openingHours . '</p>';
+                } catch (PDOException $e) {
+                    echo "Error: " . $e->getMessage();
+                }
+                ?>
+            </div>
+
             <div class="rating">
             <?php
                 require 'database.php';
                 try {
                     $stmt = $pdo->prepare("SELECT rating FROM restaurant WHERE restaurantID = :restaurantID");
-                    $stmt->execute(['restaurantID' => 1]);
+                    $stmt->execute(['restaurantID' => 3]);
                     $row = $stmt->fetch();
                     $rating = $row['rating'];
                     echo '<p class="rating-paragraph">Restaurant Rating: ' . $rating . '</p>';
@@ -70,7 +86,7 @@
 
         try {
             $stmt = $pdo->prepare("SELECT * FROM menuitem WHERE menuID = :menuID");
-            $stmt->execute(['menuID' => 1]); // Replace 1 with the actual menu ID
+            $stmt->execute(['menuID' => 3]);
             $menuItems = $stmt->fetchAll();
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
@@ -79,39 +95,39 @@
 
 
     <section id="food-menu">
-    <div class="food-menu-container container">
         <h2 class="food-menu-heading">Menu</h2>
-        <div class="food-menu-items">
-            <?php
-           
-            foreach ($menuItems as $menuItem) {
-                $imageUrl = str_replace('C:\\xampp\\htdocs\\webapp\\', '/webapp/', $menuItem['imagePath']);
+        <div class="food-menu-container container">
+            <div class="food-menu-items">
+                <?php
+            
+                foreach ($menuItems as $menuItem) {
+                    $imageUrl = str_replace('C:\\xampp\\htdocs\\webapp\\', '/webapp/', $menuItem['imagePath']);
+                    ?>
+                    <div class="food-menu-item">
+                        <img class="food-item-img" src="<?php echo $imageUrl; ?>" alt="<?php echo $menuItem['itemName']; ?>">
+                        <h3 class="food-item-name"><?php echo $menuItem['itemName']; ?></h3>
+                        <p class="food-item-description"><?php echo $menuItem['description']; ?></p>
+                        <p class="food-item-price"><?php echo 'TK ' . $menuItem['price']; ?></p>
+                    </div>
+                <?php
+                }
                 ?>
-                <div class="food-menu-item">
-                    <img class="food-item-img" src="<?php echo $imageUrl; ?>" alt="<?php echo $menuItem['itemName']; ?>">
-                    <h3 class="food-item-name"><?php echo $menuItem['itemName']; ?></h3>
-                    <p class="food-item-description"><?php echo $menuItem['description']; ?></p>
-                    <p class="food-item-price"><?php echo 'TK ' . $menuItem['price']; ?></p>
-                </div>
-            <?php
-            }
-            ?>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
 
     <section id="location">
+        <h2 class="location-heading">Locations</h2>
         <div class="location-container container">
-            <h2 class="location-heading">Locations</h2>
             <div class="location-items">
                 <?php
                 require 'database.php'; 
 
                 try {
                     $stmt = $pdo->prepare("SELECT location, address, map FROM locations WHERE restaurantID = :restaurantID");
-                    $stmt->execute(['restaurantID' => 1]); // Replace 1 with the actual restaurant ID
+                    $stmt->execute(['restaurantID' => 3]); 
 
                     while ($row = $stmt->fetch()) {
                         $location = $row['location'];
@@ -138,8 +154,7 @@
         require 'database.php'; 
         try {
             $stmt = $pdo->prepare("SELECT email, contactNumber FROM restaurant WHERE restaurantID = :restaurantID");
-            $stmt->execute(['restaurantID' => 1]); // Replace 1 with the actual restaurant ID
-
+            $stmt->execute(['restaurantID' => 3]); 
 
             $row = $stmt->fetch();
             $email = $row['email'];

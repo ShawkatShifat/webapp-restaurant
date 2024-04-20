@@ -16,8 +16,8 @@
                 <span class="line line3"></span>
             </div>
             <ul class="menu-items">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="restaurants/restaurantHome.html">Restaurants</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="restaurantHome.html">Restaurants</a></li>
                 <li><a href="#description">About</a></li>
                 <li><a href="#food-menu">Menu</a></li>
                 <li><a href="#location">Location</a></li>

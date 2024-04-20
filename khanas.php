@@ -27,7 +27,7 @@
             <h1 class="logo">FoodHaven</h1>
         </div>
     </nav>
-    <section class="showcase-area" id="showcase" style="background-image: url('images/madchef.jpg');">
+    <section class="showcase-area" id="showcase" style="background-image: url('images/khanas.jpg');">
     </section>
 
     <section id="description">
@@ -38,7 +38,7 @@
                 require 'database.php';
                 try {
                     $stmt = $pdo->prepare("SELECT description FROM restaurant WHERE restaurantID = :restaurantID");
-                    $stmt->execute(['restaurantID' => 2]);
+                    $stmt->execute(['restaurantID' => 5]);
                     $row = $stmt->fetch();
                     $description = $row['description'];
                     echo '<p class="description-paragraph">' . $description . '</p>';
@@ -53,7 +53,7 @@
                 require 'database.php';
                 try {
                     $stmt = $pdo->prepare("SELECT openingHours FROM restaurant WHERE restaurantID = :restaurantID");
-                    $stmt->execute(['restaurantID' => 2]);
+                    $stmt->execute(['restaurantID' => 5]);
                     $row = $stmt->fetch();
                     $openingHours = $row['openingHours'];
                     echo '<p class="rating-paragraph"><small>Open From: </small>' . $openingHours . '</p>';
@@ -68,7 +68,7 @@
                 require 'database.php';
                 try {
                     $stmt = $pdo->prepare("SELECT rating FROM restaurant WHERE restaurantID = :restaurantID");
-                    $stmt->execute(['restaurantID' => 2]);
+                    $stmt->execute(['restaurantID' => 5]);
                     $row = $stmt->fetch();
                     $rating = $row['rating'];
                     echo '<p class="rating-paragraph">Restaurant Rating: ' . $rating . '</p>';
@@ -80,11 +80,13 @@
         </div>
     </section>
 
+
     <?php
         require 'database.php'; 
+
         try {
             $stmt = $pdo->prepare("SELECT * FROM menuitem WHERE menuID = :menuID");
-            $stmt->execute(['menuID' => 2]);
+            $stmt->execute(['menuID' => 5]);
             $menuItems = $stmt->fetchAll();
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
@@ -96,8 +98,9 @@
         <h2 class="food-menu-heading">Menu</h2>
         <div class="food-menu-container container">
             <div class="food-menu-items">
-                    <?php
-                    foreach ($menuItems as $menuItem) {
+                <?php
+            
+                foreach ($menuItems as $menuItem) {
                     $imageUrl = str_replace('C:\\xampp\\htdocs\\webapp\\', '/webapp/', $menuItem['imagePath']);
                     ?>
                     <div class="food-menu-item">
@@ -113,8 +116,6 @@
         </div>
     </section>
 
-
-
     <section id="location">
         <h2 class="location-heading">Locations</h2>
         <div class="location-container container">
@@ -124,7 +125,7 @@
 
                 try {
                     $stmt = $pdo->prepare("SELECT location, address, map FROM locations WHERE restaurantID = :restaurantID");
-                    $stmt->execute(['restaurantID' => 2]); 
+                    $stmt->execute(['restaurantID' => 5]); 
 
                     while ($row = $stmt->fetch()) {
                         $location = $row['location'];
@@ -151,7 +152,7 @@
         require 'database.php'; 
         try {
             $stmt = $pdo->prepare("SELECT email, contactNumber FROM restaurant WHERE restaurantID = :restaurantID");
-            $stmt->execute(['restaurantID' => 2]); // Replace 1 with the actual restaurant ID
+            $stmt->execute(['restaurantID' => 5]); // Replace 1 with the actual restaurant ID
 
 
             $row = $stmt->fetch();

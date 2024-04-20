@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save'])) {
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <section class="page-edit-showcase-area" style="background-image: url('images/showcaseLogin.jpg');">
+    <section class="page-edit-showcase-area" style="background-image: url('images/admin.jpg');">
         <div class="page-edit-container">
             
             <form class="page-edit-form" action="editMenuItem.php" method="POST">

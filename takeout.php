@@ -31,8 +31,9 @@
     </section>
 
     <section id="description">
+        <h2 class="description-heading">About!</h2>
         <div class="decription-container">
-            <h2 class="description-heading">About!</h2>
+
             <div class="description-item">
                 <?php
                 require 'database.php';
@@ -95,32 +96,30 @@
 
 
     <section id="food-menu">
-    <div class="food-menu-container container">
         <h2 class="food-menu-heading">Menu</h2>
-        <div class="food-menu-items">
-            <?php
-           
-            foreach ($menuItems as $menuItem) {
-                $imageUrl = str_replace('C:\\xampp\\htdocs\\webapp\\', '/webapp/', $menuItem['imagePath']);
+        <div class="food-menu-container container">    
+            <div class="food-menu-items">
+                <?php
+            
+                foreach ($menuItems as $menuItem) {
+                    $imageUrl = str_replace('C:\\xampp\\htdocs\\webapp\\', '/webapp/', $menuItem['imagePath']);
+                    ?>
+                    <div class="food-menu-item">
+                        <img class="food-item-img" src="<?php echo $imageUrl; ?>" alt="<?php echo $menuItem['itemName']; ?>">
+                        <h3 class="food-item-name"><?php echo $menuItem['itemName']; ?></h3>
+                        <p class="food-item-description"><?php echo $menuItem['description']; ?></p>
+                        <p class="food-item-price"><?php echo 'TK ' . $menuItem['price']; ?></p>
+                    </div>
+                <?php
+                }
                 ?>
-                <div class="food-menu-item">
-                    <img class="food-item-img" src="<?php echo $imageUrl; ?>" alt="<?php echo $menuItem['itemName']; ?>">
-                    <h3 class="food-item-name"><?php echo $menuItem['itemName']; ?></h3>
-                    <p class="food-item-description"><?php echo $menuItem['description']; ?></p>
-                    <p class="food-item-price"><?php echo 'TK ' . $menuItem['price']; ?></p>
-                </div>
-            <?php
-            }
-            ?>
+            </div>
         </div>
-    </div>
-</section>
-
-
+    </section>
 
     <section id="location">
+        <h2 class="location-heading">Locations</h2>
         <div class="location-container container">
-            <h2 class="location-heading">Locations</h2>
             <div class="location-items">
                 <?php
                 require 'database.php'; 

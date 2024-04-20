@@ -33,7 +33,7 @@ $locationData = $stmt->fetch();
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<section class="page-edit-showcase-area" style="background-image: url('images/showcaseLogin.jpg');">
+<section class="page-edit-showcase-area" style="background-image: url('images/admin.jpg');">
     <div class="page-edit-container">
         <form class="page-edit-form" action="pageLocationEdit.php" method="POST">
             <h3><span>Location Edit</span></h3>

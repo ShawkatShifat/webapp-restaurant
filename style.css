@@ -112,6 +112,12 @@ button[type="login-submit"]:hover {
   border-color: #117964;
 }
 
+.error-message{
+  text-align: center;
+  color: red;
+  font-weight: 300;
+}
+
 button[type="food-item-description-edit"] {
   align-self: center;
   display: block;

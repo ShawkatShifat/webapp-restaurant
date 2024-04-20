@@ -17,8 +17,9 @@
                 <span class="line line3"></span>
             </div>
             <ul class="menu-items">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="login.html" id="login-btn">Login</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="login.php" id="login-btn">Login</a></li>
+                <li><a href="logout.php" id="logout-btn" style="display: none;">Logout</a></li>
             </ul>
             <h1 class="logo">FoodHaven</h1>
         </div>
@@ -49,70 +50,93 @@
             <!--Until this section-->
             <div class="restaurant-list-item">
                 <div class="restaurant-img">
-                    <img src="images/madchef.jpg" alt="error" />
+                    <img src="images/madchef.jpg" alt="" />
                 </div>
                 <div class="restaurant-description">
                     <h2 class="restaurant-title">Madchef</h2>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Non,
-                        quae.
+                        <ins>Locations:</ins> Banani, Dhanmondi, Tejgaon, Khilgaon, Bailey Road
+                    </p>
+                    <p class="restaurant-rating">Rating: 4.0/5</p>
+                    <a href="madchef.php" class="btn btn-primary" target="_blank">Check</a>
+                </div>
+            </div>
+
+            <div class="restaurant-list-item">
+                <div class="restaurant-img">
+                    <img src="images/Sultans-Dine.jpg" alt="" />
+                </div>
+                <div class="restaurant-description">
+                    <h2 class="restaurant-title">Sultan's Dine</h2>
+                    <p>
+                        <ins>Locations:</ins> Banani, Dhanmondi, Tejgaon, Khilgaon, Bailey Road
+                    </p>
+                    <p class="restaurant-rating">Rating: 4.2/5</p>
+                    <a href="sultansdine.php" class="btn btn-primary" target="_blank">Check</a>
+                </div>
+            </div>
+
+            <div class="restaurant-list-item">
+                <div class="restaurant-img">
+                    <img src="images/manhattanFishMarket.jpg" alt="" />
+                </div>
+                <div class="restaurant-description">
+                    <h2 class="restaurant-title">Manhattan Fish Market</h2>
+                    <p>
+                        <ins>Locations:</ins> Banani, Dhanmondi, Tejgaon, Khilgaon, Bailey Road
                     </p>
                     <p class="restaurant-rating">Rating: 4.4/5</p>
-                    <a href="madchef.html" class="btn btn-primary" target="_blank">Check</a>
+                    <a href="manhattanfishmarket.php" class="btn btn-primary" target="_blank">Check</a>
                 </div>
             </div>
+
             <div class="restaurant-list-item">
                 <div class="restaurant-img">
-                    <img src="https://i.postimg.cc/8zbCtYkF/restaurant-menu3.jpg" alt="" />
+                    <img src="images/Khanas.jpg" alt="" />
                 </div>
                 <div class="restaurant-description">
-                    <h2 class="restaurant-title">Food Menu Item 3</h2>
+                    <h2 class="restaurant-title">Khana's</h2>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Non,
-                        quae.
+                        <ins>Locations:</ins> Banani, Dhanmondi, Tejgaon, Khilgaon, Bailey Road
                     </p>
-                    <p class="restaurant-rating">Rating: 3/5</p>
+                    <p class="restaurant-rating">Rating: 4.7/5</p>
+                    <a href="khanas.php" class="btn btn-primary" target="_blank">Check</a>
                 </div>
             </div>
+
             <div class="restaurant-list-item">
                 <div class="restaurant-img">
-                    <img src="https://i.postimg.cc/Yq98p5Z7/food-menu4.jpg" alt="" />
+                    <img src="images/dimsumTown.jpg" alt="" />
                 </div>
                 <div class="restaurant-description">
-                    <h2 class="restaurant-title">Food Menu Item 4</h2>
+                    <h2 class="restaurant-title">Dimsum Town</h2>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Non,
-                        quae.
+                        <ins>Locations:</ins> Banani, Dhanmondi, Tejgaon, Khilgaon, Bailey Road
                     </p>
-                    <p class="restaurant-rating">Price: &#8377; 250</p>
-                </div>
-            </div>
-            <div class="restaurant-list-item">
-                <div class="restaurant-img">
-                    <img src="https://i.postimg.cc/KYnDqxkP/food-menu5.jpg" alt="" />
-                </div>
-                <div class="restaurant-description">
-                    <h2 class="restaurant-title">Food Menu Item 5</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Non,
-                        quae.
-                    </p>
-                    <p class="restaurant-rating">Price: &#8377; 250</p>
-                </div>
-            </div>
-            <div class="restaurant-list-item">
-                <div class="restaurant-img">
-                    <img src="https://i.postimg.cc/Jnxc8xQt/food-menu6.jpg" alt="" />
-                </div>
-                <div class="restaurant-description">
-                    <h2 class="restaurant-title">Food Menu Item 6</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Non,
-                        quae.
-                    </p>
-                    <p class="restaurant-rating">Price: &#8377; 250</p>
+                    <p class="restaurant-rating">Rating: 4.8/5</p>
+                    <a href="dimsum.php" class="btn btn-primary" target="_blank">Check</a>
                 </div>
             </div>
         </div>
     </section>
+
+    <script>
+        function isLoggedIn() {
+            return document.cookie.split(';').some((item) => item.trim().startsWith('isLoggedIn='));
+        }
+        const loginBtn = document.querySelector("#login-btn");
+        const logoutBtn = document.querySelector("#logout-btn");
+
+        function toggleLoginStatus() {
+            if (isLoggedIn()) {
+                loginBtn.style.display = "none";
+                logoutBtn.style.display = "block";
+            } else {
+                loginBtn.style.display = "block";
+                logoutBtn.style.display = "none";
+            }
+        }
+        window.onload = toggleLoginStatus;
+    </script>  
+
 </body>
