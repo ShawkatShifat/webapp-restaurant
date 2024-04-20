@@ -19,7 +19,7 @@
             </div>
             <ul class="menu-items">
                 <li><a href="#about">About Us</a></li>
-                <li><a href="restaurantHome.html">Restaurants</a></li>
+                <li><a href="adminResHome.html">Restaurants</a></li>
                 <li><a href="#recommendations">Recommendation</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="login.php" id="login-btn">Login</a></li>
@@ -33,7 +33,7 @@
         <div class="showcase-container">
             <h1 class="main-title" id="home">Good Food, Great Mood</h1>
             <p>We will help you find restaurants</p>
-            <a href="restaurantHome.html" class="btn btn-primary">Restaurants</a>
+            <a href="adminResHome.html" class="btn btn-primary">Restaurants</a>
         </div>
     </section>
     <!--About Us-->
@@ -105,7 +105,7 @@
                 <div class="recommendation-detail">
                     <div class="recommendation-photo">
                         <img src="images/takeout.jpg" alt="" />
-                        <a href="takeout.php" class="btn btn-primary">Takeout</a>
+                        <a href="adminTakeout.php" class="btn btn-primary">Takeout</a>
                     </div>
                 </div>
                 <div class="star-rating">

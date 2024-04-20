@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["role"] = $role;
         setcookie("isLoggedIn", true, time() + (86400 * 30), "/");
         if ($role == 'admin') {
-            header("location: index.php"); 
+            header("location: adminIndex.php"); 
         } else {
             header("location: index.php"); 
         }
