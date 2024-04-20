@@ -27,7 +27,7 @@
             <h1 class="logo">FoodHaven</h1>
         </div>
     </nav>
-    <section class="showcase-area" id="showcase" style="background-image: url('images/manhattanFishMarket.jpg');">
+    <section class="showcase-area" id="showcase" style="background-image: url('images/Manhattan fish logo.jpg');">
     </section>
 
     <section id="description">
